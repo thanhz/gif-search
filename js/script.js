@@ -11,15 +11,8 @@ document.querySelector('form').addEventListener('submit', event => {
         }
     }
 
-    let query = document.getElementById('input').value;
-    let limit = 18;
-    let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${query}&limit=${limit}`
-    //Call API
-    fetch(url)
-        .then(response => response.json())
-        .then(content => {
-            let result = content.data; //array of results
-            console.log(result);
+    getGif().then(data => {
+            let result = data.data; //array of results
             for (const e of result) {
                 addGifDom(e);
             }
@@ -29,6 +22,15 @@ document.querySelector('form').addEventListener('submit', event => {
             console.error(error)
         })
 })
+
+async function getGif() {
+    let query = document.getElementById('input').value;
+    let limit = 18;
+    let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${query}&limit=${limit}`
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
 
 function addGifDom(...array) {
     let fig = document.createElement('figure');
