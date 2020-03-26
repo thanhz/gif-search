@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 25px 50px;
+}
+
+form {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+#input {
+    font-size: 3.5vw;
+}
+
+.grid >.grid__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(160px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+}
+
+.grid > .grid__items > figure > img {
+    width: 95%;
+    height: 95%;
+    transition: width 1s, height 1s, transform 1s;
+    object-fit: cover;
+}
+
+.grid > .grid__items > figure > img:hover {
+    width: 100%;
+    height: 100%;
+}
+
+.grid > .grid__items > figure {
+    position: relative;
+    float: left;
+  }
+
+.grid > .grid__items > figure > figcaption{
+    background-color: black;
+    color: white;
+    max-width: 400px;
+    font-size: 10px;
+    display: block;
+    float: left;
+    position: absolute;
+    top: 0;
+}
